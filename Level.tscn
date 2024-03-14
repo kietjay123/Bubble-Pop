@@ -1,0 +1,213 @@
+[gd_scene load_steps=17 format=3 uid="uid://cv75ufnlsfih"]
+
+[ext_resource type="Script" path="res://Ball manager.gd" id="1"]
+[ext_resource type="Script" path="res://Root.gd" id="1_ht14p"]
+[ext_resource type="Texture2D" uid="uid://be750prgyrat5" path="res://icon.png" id="2"]
+[ext_resource type="Script" path="res://scoring system.gd" id="3"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="4"]
+[ext_resource type="Script" path="res://Gun.gd" id="5"]
+[ext_resource type="Texture2D" uid="uid://damynvfybmuiw" path="res://received_6918269111591593.jpg" id="6_tonbl"]
+[ext_resource type="Script" path="res://UI script/Win screen.gd" id="8_apjqi"]
+[ext_resource type="Texture2D" uid="uid://cl2e2cb0wfca8" path="res://asset/a0MPPkYb_700w_0.jpg" id="9_8j60m"]
+[ext_resource type="Script" path="res://UI script/Lose screen.gd" id="10_qpnkr"]
+[ext_resource type="Texture2D" uid="uid://c3len1eq7ubnv" path="res://asset/aEXWD0rE_700w_0.jpg" id="11_0elwt"]
+[ext_resource type="Script" path="res://UI script/Special ball select.gd" id="12_0q2jt"]
+
+[sub_resource type="SegmentShape2D" id="1"]
+b = Vector2(0, 1920)
+
+[sub_resource type="SegmentShape2D" id="2"]
+a = Vector2(1080, 0)
+b = Vector2(1080, 1920)
+
+[sub_resource type="SegmentShape2D" id="3"]
+b = Vector2(1080, 0)
+
+[sub_resource type="SegmentShape2D" id="4"]
+a = Vector2(0, 1920)
+b = Vector2(1080, 1920)
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_ht14p")
+
+[node name="Ball manager" type="Node" parent="."]
+script = ExtResource("1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("4")
+camSpeed = 300.0
+
+[node name="Score display" type="Label" parent="Camera2D"]
+offset_left = 631.0
+offset_top = 1809.0
+offset_right = 671.0
+offset_bottom = 1823.0
+scale = Vector2(4, 4)
+script = ExtResource("3")
+
+[node name="Gun" type="Node2D" parent="Camera2D"]
+position = Vector2(540, 1820)
+script = ExtResource("5")
+
+[node name="Icon" type="Sprite2D" parent="Camera2D/Gun"]
+visible = false
+texture = ExtResource("2")
+
+[node name="swap ball" type="TextureButton" parent="Camera2D/Gun"]
+offset_left = 373.0
+offset_top = -77.0
+offset_right = 876.0
+offset_bottom = 426.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("6_tonbl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Left border" type="Area2D" parent="Camera2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Left border"]
+shape = SubResource("1")
+
+[node name="Right border" type="Area2D" parent="Camera2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Right border"]
+shape = SubResource("2")
+
+[node name="Top border" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Top border"]
+shape = SubResource("3")
+
+[node name="Bottom border" type="Area2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/Bottom border"]
+shape = SubResource("4")
+
+[node name="Lose screen" type="Control" parent="Camera2D"]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_qpnkr")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Lose screen"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Lose pic" type="TextureRect" parent="Camera2D/Lose screen"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 477.0
+texture = ExtResource("11_0elwt")
+
+[node name="Label" type="Label" parent="Camera2D/Lose screen"]
+layout_mode = 0
+offset_left = 326.0
+offset_top = 718.0
+offset_right = 404.0
+offset_bottom = 741.0
+scale = Vector2(5, 5)
+text = "YOU LOSE"
+
+[node name="main menu button" type="Button" parent="Camera2D/Lose screen"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 1495.0
+offset_right = 252.0
+offset_bottom = 1526.0
+scale = Vector2(2, 2)
+text = "MAIN MENU"
+
+[node name="retry button" type="Button" parent="Camera2D/Lose screen"]
+layout_mode = 0
+offset_left = 634.0
+offset_top = 1491.0
+offset_right = 690.0
+offset_bottom = 1522.0
+scale = Vector2(2, 2)
+text = "RETRY"
+
+[node name="Win screen" type="Control" parent="Camera2D"]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("8_apjqi")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/Win screen"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Win pic" type="TextureRect" parent="Camera2D/Win screen"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 599.0
+texture = ExtResource("9_8j60m")
+
+[node name="Label" type="Label" parent="Camera2D/Win screen"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 718.0
+offset_right = 402.0
+offset_bottom = 741.0
+scale = Vector2(5, 5)
+text = "YOU WIN"
+
+[node name="main menu button" type="Button" parent="Camera2D/Win screen"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 1493.0
+offset_right = 254.0
+offset_bottom = 1524.0
+scale = Vector2(2, 2)
+text = "MAIN MENU"
+
+[node name="retry button" type="Button" parent="Camera2D/Win screen"]
+layout_mode = 0
+offset_left = 635.0
+offset_top = 1492.0
+offset_right = 691.0
+offset_bottom = 1523.0
+scale = Vector2(2, 2)
+text = "RETRY"
+
+[node name="Special ball group" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 31.0
+offset_top = 1666.0
+offset_right = 107.55
+offset_bottom = 1706.0
+scale = Vector2(2, 2)
+
+[node name="ItemList" type="ItemList" parent="Camera2D/Special ball group"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 117.0
+item_count = 4
+item_0/text = "Bomb"
+item_1/text = "Rocket"
+item_2/text = "Rainbow"
+item_3/text = "Laser"
+script = ExtResource("12_0q2jt")
+
+[connection signal="win" from="Ball manager" to="." method="_on_ball_manager_win"]
+[connection signal="lose" from="Camera2D/Gun" to="." method="_on_gun_lose"]
+[connection signal="pressed" from="Camera2D/Gun/swap ball" to="Camera2D/Gun" method="_on_swap_ball_pressed"]
+[connection signal="pressed" from="Camera2D/Lose screen/main menu button" to="Camera2D/Lose screen" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/Lose screen/retry button" to="Camera2D/Lose screen" method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Camera2D/Win screen/main menu button" to="Camera2D/Win screen" method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Camera2D/Win screen/retry button" to="Camera2D/Win screen" method="_on_retry_button_pressed"]
+[connection signal="addSpecialBall" from="Camera2D/Special ball group/ItemList" to="Camera2D/Gun" method="addBallToAmmo"]
+[connection signal="item_selected" from="Camera2D/Special ball group/ItemList" to="Camera2D/Special ball group/ItemList" method="_on_item_selected"]

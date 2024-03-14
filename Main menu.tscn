@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=3 uid="uid://cb1bfhyea8jve"]
+
+[ext_resource type="Texture2D" uid="uid://trvlycn3lpvf" path="res://asset/Bundesarchiv_Bild_101I-212-0221-07_2C_Russland-Nord_2C_Erschie_C3_9Fung_von_Partisanen.png" id="1_6sefq"]
+[ext_resource type="Script" path="res://Main menu.gd" id="1_i8abv"]
+[ext_resource type="Script" path="res://Level select play.gd" id="3_iesrd"]
+[ext_resource type="Script" path="res://UI script/ItemList.gd" id="4_yx57v"]
+
+[sub_resource type="Theme" id="Theme_lq85y"]
+Label/colors/font_color = Color(0.639216, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kisjr"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_3mf8s"]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_kisjr")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mibuj"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_ojqxu"]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/styles/normal = SubResource("StyleBoxFlat_mibuj")
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_i8abv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("1_6sefq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 198.0
+offset_top = 164.0
+offset_right = 238.0
+offset_bottom = 187.0
+scale = Vector2(5, 5)
+theme = SubResource("Theme_lq85y")
+text = "BUBBLE SHOOTER"
+
+[node name="Play" type="Button" parent="."]
+offset_left = 44.0
+offset_top = 1708.0
+offset_right = 52.0
+offset_bottom = 1716.0
+scale = Vector2(5, 5)
+theme = SubResource("Theme_3mf8s")
+text = "PLAY"
+
+[node name="Edit" type="Button" parent="."]
+offset_left = 312.0
+offset_top = 1708.0
+offset_right = 355.0
+offset_bottom = 1739.0
+scale = Vector2(4, 4)
+theme = SubResource("Theme_ojqxu")
+text = "EDIT
+"
+
+[node name="Level select" type="Panel" parent="."]
+visible = false
+offset_left = 147.0
+offset_top = 373.0
+offset_right = 947.0
+offset_bottom = 1573.0
+script = ExtResource("3_iesrd")
+
+[node name="select" type="Button" parent="Level select"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 1095.0
+offset_right = 550.0
+offset_bottom = 1126.0
+scale = Vector2(2, 2)
+text = "SELECT"
+
+[node name="back" type="Button" parent="Level select"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 1091.0
+offset_right = 208.0
+offset_bottom = 1122.0
+scale = Vector2(2, 2)
+text = "BACK"
+
+[node name="ItemList" type="ItemList" parent="Level select"]
+layout_mode = 0
+offset_right = 796.0
+offset_bottom = 1072.0
+theme_override_font_sizes/font_size = 100
+auto_height = true
+max_columns = 10
+same_column_width = true
+script = ExtResource("4_yx57v")
+
+[connection signal="pressed" from="Play" to="Level select" method="_on_play_pressed"]
+[connection signal="pressed" from="Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="Level select/select" to="Level select" method="_on_select_pressed"]
+[connection signal="pressed" from="Level select/back" to="Level select" method="_on_back_pressed"]
+[connection signal="item_selected" from="Level select/ItemList" to="Level select" method="_on_item_list_item_selected"]
+[connection signal="visibility_changed" from="Level select/ItemList" to="Level select/ItemList" method="_on_visibility_changed"]

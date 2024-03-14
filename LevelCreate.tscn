@@ -1,0 +1,393 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyn60nqcb8qee"]
+
+[ext_resource type="Script" path="res://UI script/Ball option.gd" id="1"]
+[ext_resource type="Script" path="res://create level script/Ball manager.gd" id="2"]
+[ext_resource type="Script" path="res://UI script/Autofill popup.gd" id="2_agyag"]
+[ext_resource type="Script" path="res://create level script/Camera.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://be750prgyrat5" path="res://icon.png" id="4"]
+[ext_resource type="Script" path="res://UI script/Level select.gd" id="4_ca17x"]
+[ext_resource type="Script" path="res://UI script/ItemList.gd" id="5_kqvqf"]
+
+[sub_resource type="Theme" id="Theme_ydisn"]
+
+[node name="Root" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3")
+
+[node name="UI" type="Node2D" parent="Camera2D"]
+z_index = 1
+
+[node name="Overwrite warning" type="Control" parent="Camera2D/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 360.0
+offset_top = 700.0
+offset_right = 400.0
+offset_bottom = 740.0
+scale = Vector2(2, 2)
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/Overwrite warning"]
+layout_mode = 0
+offset_right = 207.0
+offset_bottom = 98.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/Overwrite warning"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Overwrite warning
+"
+
+[node name="Continue button" type="Button" parent="Camera2D/UI/Overwrite warning"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 55.5
+offset_right = 96.0
+offset_bottom = 86.5
+text = "Continue"
+
+[node name="Return" type="Button" parent="Camera2D/UI/Overwrite warning"]
+layout_mode = 0
+offset_left = 119.5
+offset_top = 55.5
+offset_right = 127.5
+offset_bottom = 63.5
+text = "Return
+"
+
+[node name="Autofill popup" type="Control" parent="Camera2D/UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 340.0
+offset_top = 707.0
+offset_right = 380.0
+offset_bottom = 747.0
+scale = Vector2(2, 2)
+script = ExtResource("2_agyag")
+
+[node name="Panel" type="Panel" parent="Camera2D/UI/Autofill popup"]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 94.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/Autofill popup"]
+layout_mode = 0
+offset_right = 209.0
+offset_bottom = 23.0
+text = "Missing required level data"
+
+[node name="Autofill button" type="Button" parent="Camera2D/UI/Autofill popup"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 50.5
+offset_right = 89.0
+offset_bottom = 81.5
+text = "AutoFill"
+
+[node name="Return button" type="Button" parent="Camera2D/UI/Autofill popup"]
+layout_mode = 0
+offset_left = 129.5
+offset_top = 49.0
+offset_right = 190.5
+offset_bottom = 80.0
+text = "Return"
+
+[node name="background" type="Node2D" parent="Camera2D/UI"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/UI/background"]
+offset_top = 1536.0
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0.133333, 0.109804, 0.109804, 1)
+
+[node name="Ball grid" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 516.0
+offset_top = 1706.0
+offset_right = 556.0
+offset_bottom = 1746.0
+
+[node name="Apply" type="Button" parent="Camera2D/UI/Ball grid"]
+layout_mode = 0
+offset_top = 141.0
+offset_right = 48.0
+offset_bottom = 161.0
+scale = Vector2(2, 2)
+text = "Apply"
+
+[node name="Label" type="Label" parent="Camera2D/UI/Ball grid"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 33.0
+offset_right = 67.0
+offset_bottom = 47.0
+scale = Vector2(2, 2)
+text = "Ball width"
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/UI/Ball grid"]
+layout_mode = 0
+offset_top = 79.0
+offset_right = 58.0
+offset_bottom = 103.0
+scale = Vector2(2, 2)
+text = "10"
+
+[node name="Camera3D control" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 809.0
+offset_top = 1534.0
+offset_right = 849.0
+offset_bottom = 1574.0
+
+[node name="Up" type="Button" parent="Camera2D/UI/Camera3D control"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 80.0
+offset_right = 27.0
+offset_bottom = 100.0
+scale = Vector2(2, 2)
+text = "Up"
+
+[node name="Down" type="Button" parent="Camera2D/UI/Camera3D control"]
+layout_mode = 0
+offset_top = 136.0
+offset_right = 48.0
+offset_bottom = 156.0
+scale = Vector2(2, 2)
+text = "Down"
+
+[node name="Label" type="Label" parent="Camera2D/UI/Camera3D control"]
+layout_mode = 0
+offset_left = -13.0
+offset_top = 27.0
+offset_right = 84.0
+offset_bottom = 58.0
+scale = Vector2(2, 2)
+text = "Camera3D control
+"
+
+[node name="Ball edit" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 19.0
+offset_top = 1550.0
+offset_right = 115.0
+offset_bottom = 1628.0
+theme = SubResource("Theme_ydisn")
+
+[node name="Label" type="Label" parent="Camera2D/UI/Ball edit"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+text = "Ball edit"
+
+[node name="Ball option" type="Node2D" parent="Camera2D/UI/Ball edit"]
+
+[node name="Ball option" type="OptionButton" parent="Camera2D/UI/Ball edit/Ball option"]
+offset_left = -4.0
+offset_top = 34.0
+offset_right = 25.0
+offset_bottom = 54.0
+scale = Vector2(2, 2)
+script = ExtResource("1")
+
+[node name="Ammo edit" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 291.0
+offset_top = 1556.0
+offset_right = 331.0
+offset_bottom = 1596.0
+
+[node name="Button" type="Button" parent="Camera2D/UI/Ammo edit"]
+layout_mode = 0
+offset_top = 34.0
+offset_right = 12.0
+offset_bottom = 54.0
+scale = Vector2(2, 2)
+text = "Edit"
+
+[node name="Label" type="Label" parent="Camera2D/UI/Ammo edit"]
+layout_mode = 0
+offset_right = 72.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+text = "Ammo edit"
+
+[node name="Sub panel" type="Panel" parent="Camera2D/UI/Ammo edit"]
+visible = false
+layout_mode = 0
+offset_left = -47.0
+offset_top = -1270.0
+offset_right = 579.0
+offset_bottom = -444.0
+
+[node name="back" type="Button" parent="Camera2D/UI/Ammo edit/Sub panel"]
+layout_mode = 0
+offset_left = 393.0
+offset_top = 728.0
+offset_right = 439.0
+offset_bottom = 748.0
+scale = Vector2(2, 2)
+text = "BACK"
+
+[node name="Level control" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 1555.0
+offset_right = 552.0
+offset_bottom = 1595.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/Level control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+scale = Vector2(2, 2)
+text = "Level control"
+
+[node name="Load button" type="Button" parent="Camera2D/UI/Level control"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 101.0
+offset_right = 25.0
+offset_bottom = 121.0
+scale = Vector2(2, 2)
+text = "load"
+
+[node name="Save button" type="Button" parent="Camera2D/UI/Level control"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 39.0
+offset_right = 52.0
+offset_bottom = 59.0
+scale = Vector2(2, 2)
+text = "save"
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/UI/Level control"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 35.0
+offset_right = 162.0
+offset_bottom = 59.0
+scale = Vector2(2, 2)
+
+[node name="Level select" type="Panel" parent="Camera2D/UI/Level control"]
+visible = false
+layout_mode = 0
+offset_left = -362.0
+offset_top = -1437.0
+offset_right = 438.0
+offset_bottom = -237.0
+script = ExtResource("4_ca17x")
+
+[node name="select" type="Button" parent="Camera2D/UI/Level control/Level select"]
+layout_mode = 0
+offset_left = 487.0
+offset_top = 1095.0
+offset_right = 550.0
+offset_bottom = 1126.0
+scale = Vector2(2, 2)
+text = "SELECT"
+
+[node name="back" type="Button" parent="Camera2D/UI/Level control/Level select"]
+layout_mode = 0
+offset_left = 158.0
+offset_top = 1091.0
+offset_right = 208.0
+offset_bottom = 1122.0
+scale = Vector2(2, 2)
+text = "BACK"
+
+[node name="delete" type="Button" parent="Camera2D/UI/Level control/Level select"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 1094.0
+offset_right = 366.0
+offset_bottom = 1125.0
+scale = Vector2(2, 2)
+text = "DELETE"
+
+[node name="ItemList" type="ItemList" parent="Camera2D/UI/Level control/Level select"]
+layout_mode = 0
+offset_right = 796.0
+offset_bottom = 1072.0
+theme_override_font_sizes/font_size = 100
+auto_height = true
+max_columns = 10
+same_column_width = true
+script = ExtResource("5_kqvqf")
+
+[node name="Test button" type="Button" parent="Camera2D/UI"]
+offset_left = 843.0
+offset_top = 1810.0
+offset_right = 887.0
+offset_bottom = 1841.0
+scale = Vector2(2, 2)
+text = "TEST"
+
+[node name="Camera reach control" type="Control" parent="Camera2D/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 302.0
+offset_top = 1687.0
+offset_right = 342.0
+offset_bottom = 1727.0
+
+[node name="Label" type="Label" parent="Camera2D/UI/Camera reach control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(2, 2)
+text = "Camera reach"
+
+[node name="LineEdit" type="LineEdit" parent="Camera2D/UI/Camera reach control"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 61.0
+offset_right = 64.0625
+offset_bottom = 92.0
+scale = Vector2(2, 2)
+text = "8"
+
+[node name="Button" type="Button" parent="Camera2D/UI/Camera reach control"]
+layout_mode = 0
+offset_top = 151.0
+offset_right = 52.0
+offset_bottom = 182.0
+scale = Vector2(2, 2)
+text = "Apply
+"
+
+[node name="Ball manager" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Roof" type="Sprite2D" parent="."]
+position = Vector2(540, 10)
+scale = Vector2(17, 0.5)
+texture = ExtResource("4")
+
+[connection signal="pressed" from="Camera2D/UI/Autofill popup/Autofill button" to="Ball manager" method="_on_autofill_button_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Autofill popup/Return button" to="Camera2D/UI/Autofill popup" method="_on_return_button_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Ball grid/Apply" to="Ball manager" method="_on_Apply_pressed"]
+[connection signal="button_down" from="Camera2D/UI/Camera3D control/Up" to="Camera2D" method="_on_Up_button_down"]
+[connection signal="button_down" from="Camera2D/UI/Camera3D control/Down" to="Camera2D" method="_on_Down_button_down"]
+[connection signal="item_selected" from="Camera2D/UI/Ball edit/Ball option/Ball option" to="Ball manager" method="_on_Ball_option_item_selected"]
+[connection signal="pressed" from="Camera2D/UI/Level control/Load button" to="Camera2D/UI/Level control/Level select" method="_on_load_button_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Level control/Save button" to="Ball manager" method="_on_save_button_pressed"]
+[connection signal="onLevelSelect" from="Camera2D/UI/Level control/Level select" to="Ball manager" method="_on_level_select_on_level_select"]
+[connection signal="pressed" from="Camera2D/UI/Level control/Level select/select" to="Camera2D/UI/Level control/Level select" method="_on_select_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Level control/Level select/back" to="Camera2D/UI/Level control/Level select" method="_on_back_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Level control/Level select/delete" to="Camera2D/UI/Level control/Level select" method="_on_delete_pressed"]
+[connection signal="item_selected" from="Camera2D/UI/Level control/Level select/ItemList" to="Camera2D/UI/Level control/Level select" method="_on_item_list_item_selected"]
+[connection signal="visibility_changed" from="Camera2D/UI/Level control/Level select/ItemList" to="Camera2D/UI/Level control/Level select/ItemList" method="_on_visibility_changed"]
+[connection signal="pressed" from="Camera2D/UI/Test button" to="Ball manager" method="_on_Test_button_pressed"]
+[connection signal="pressed" from="Camera2D/UI/Camera reach control/Button" to="Ball manager" method="_on_camReach_button_pressed"]
+[connection signal="on_autoFill_trigger" from="Ball manager" to="Camera2D/UI/Autofill popup" method="_on_ball_manager_on_auto_fill_trigger"]

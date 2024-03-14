@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://txdke7xuxidr"]
+
+[sub_resource type="GDScript" id="GDScript_t8vgq"]
+
+[node name="level data" type="Node"]
+script = SubResource("GDScript_t8vgq")

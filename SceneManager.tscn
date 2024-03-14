@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4vt6hod61msp"]
+
+[ext_resource type="Script" path="res://SceneManager.gd" id="1"]
+
+[node name="SceneManager" type="Node"]
+script = ExtResource("1")
+scenes = {
+"creator": "res://LevelCreate.tscn",
+"mainMenu": "res://Main menu.tscn",
+"player": "res://Level.tscn"
+}
